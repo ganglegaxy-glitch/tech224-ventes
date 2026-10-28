@@ -573,15 +573,99 @@ def page(body):
     return render_template_string(BASE, body=body)
 
 
+HOME = """<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TECH224 Ventes — Gérez plus de ventes</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f7f1e3;color:#1d2b22;line-height:1.55}
+a{color:inherit}.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+.topbar{background:#123524;color:#f7f1e3;font-size:14px}.topbar .wrap{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}.topbar strong{color:#ffb27a}
+header.site{position:sticky;top:0;background:#fbf7ec;border-bottom:1px solid #e5dcc3;z-index:10}header.site .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+.logo{font-family:Georgia,serif;font-weight:700;letter-spacing:.06em;font-size:20px;color:#123524}.logo small{display:block;font-size:11px;letter-spacing:.22em;color:#c75a1a}
+nav{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap;font-size:14px}nav a{text-decoration:none}
+.btn{display:inline-block;text-decoration:none;border-radius:999px;padding:12px 20px;font-weight:700;border:2px solid #c75a1a}.btn-primary{background:#c75a1a;color:#fff}.btn-ghost{color:#123524}.btn-light{background:#fff;color:#123524;border-color:#fff}.btn-dark{background:#123524;color:#fff;border-color:#123524}
+.eyebrow{color:#c75a1a;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800}
+h1,h2{font-family:Georgia,serif;line-height:1.15;color:#123524}h1{font-size:clamp(34px,6vw,58px);margin:14px 0}h1 em{color:#c75a1a;font-style:italic}h2{font-size:clamp(26px,4vw,38px);text-align:center;margin:0 0 12px}h3{margin:0 0 8px;color:#123524}
+section{padding:56px 0}.lead{font-size:18px;max-width:760px}.center{text-align:center}.center .lead{margin:0 auto}
+.hero{background:#f7f1e3}.hero .actions,.cta .actions{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}.ticks{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;font-weight:600}
+.dark{background:#123524;color:#f7f1e3}.dark h2{color:#fff}.dark .eyebrow{color:#ffb27a}
+.grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(18,53,36,.08)}.dark .card{background:#1d4632;color:#f7f1e3}.dark .card h3{color:#fff}.icon{font-size:26px}
+.mock{background:#fff;border-radius:20px;padding:18px;box-shadow:0 12px 30px rgba(18,53,36,.14);max-width:820px;margin:28px auto 0}.mock .tabs{display:flex;gap:8px;flex-wrap:wrap}.mock .tabs span{padding:8px 14px;border-radius:999px;background:#f0e9d8}.mock .tabs span.on{background:#123524;color:#fff}.mock table{width:100%;border-collapse:collapse;margin-top:16px}.mock th,.mock td{text-align:left;padding:10px;border-bottom:1px solid #eee;font-size:14px}.note{font-size:13px;color:#5a6a60;text-align:center}
+table.compare{width:100%;border-collapse:collapse;background:#fff;border-radius:18px;overflow:hidden;margin-top:28px}table.compare th,table.compare td{padding:14px;text-align:left;border-bottom:1px solid #eee}table.compare th{background:#123524;color:#fff}
+.steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}.step{background:#fff;border-radius:16px;padding:20px}.step b{color:#c75a1a;font-size:22px}
+.price{border:2px solid #e5dcc3}.price.hot{border-color:#c75a1a}.price .amount{font-family:Georgia,serif;font-size:30px;color:#123524}.price .per{font-size:14px;color:#5a6a60}
+.faq{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}.faq details{background:#fff;border-radius:14px;padding:16px 18px}.faq summary{font-weight:700;cursor:pointer}
+.cta{background:#123524;color:#fff;text-align:center}.cta h2{color:#fff}
+footer{background:#0d2a1c;color:#d9e2d6;padding:40px 0}footer .cols{display:grid;grid-template-columns:1fr;gap:24px}footer a{text-decoration:none}footer .fine{border-top:1px solid #2a4a3a;margin-top:28px;padding-top:18px;font-size:13px}
+@media(min-width:720px){.grid,.steps{grid-template-columns:1fr 1fr 1fr}.faq{grid-template-columns:1fr 1fr}footer .cols{grid-template-columns:1.4fr 1fr 1fr}}
+</style></head><body>
+<div class="topbar"><div class="wrap"><span><strong>14 jours d'essai offerts</strong></span><span>Téléphone : +224 624 683 196</span></div></div>
+<header class="site"><div class="wrap"><div class="logo">TECH224 VENTES<small>CAISSE</small></div>
+<nav><a href="#fonctionnalites">Fonctionnalités</a><a href="#produit">Le produit</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a></nav>
+<a class="btn btn-ghost" href="/login">Se connecter</a><a class="btn btn-primary" href="/register">Essai 14 jours</a></div></header>
+<main>
+<section class="hero"><div class="wrap"><p class="eyebrow">Pour les commerces d'Afrique de l'Ouest</p>
+<h1>Gérez plus de <em>ventes</em>, sans plus de paperasse.</h1>
+<p class="lead">TECH224 Ventes rassemble votre caisse, votre stock, votre facturation, vos clients et vos rapports — en francs guinéens, depuis votre téléphone ou votre ordinateur.</p>
+<div class="actions"><a class="btn btn-primary" href="/register">Démarrer l'essai gratuit</a><a class="btn btn-ghost" href="#produit">Voir le produit</a></div>
+<p class="ticks"><span>✓ Sans carte bancaire</span><span>✓ Données hébergées et sauvegardées</span><span>✓ 14 jours d'essai</span></p></div></section>
+<section id="fonctionnalites"><div class="wrap"><div class="center"><p class="eyebrow">Fonctionnalités</p><h2>Tout ce qu'il faut pour vendre, au même endroit</h2><p class="lead">Chaque outil correspond à une action réelle de l'application : enregistrer, suivre et retrouver vos ventes.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">🧾</div><h3>Une caisse rapide</h3><p>Ajoutez des produits au panier, choisissez le moyen de paiement et encaissez. Le total est calculé par le serveur, et le stock est mis à jour à chaque vente.</p></div>
+<div class="card"><div class="icon">📦</div><h3>Un stock intelligent</h3><p>Suivez les quantités disponibles et repérez les produits proches de la rupture grâce à votre seuil d'alerte, boutique par boutique.</p></div>
+<div class="card"><div class="icon">🧮</div><h3>Facturation et suivi</h3><p>Chaque vente reçoit une référence numérotée. Retrouvez-la ensuite, et supprimez-la si besoin : le stock est alors restauré.</p></div>
+<div class="card"><div class="icon">👥</div><h3>Des fiches clients</h3><p>Enregistrez vos clients avec leur téléphone et retrouvez l'historique de leurs achats, sans carnet séparé.</p></div>
+<div class="card"><div class="icon">📊</div><h3>Des rapports clairs</h3><p>Consultez le chiffre du jour, les ventes récentes et des totaux sur 7, 30 ou 90 jours, pour décider en connaissance de cause.</p></div>
+<div class="card"><div class="icon">🏪</div><h3>Plusieurs boutiques</h3><p>Créez plusieurs boutiques sous le même compte commerçant. Chaque boutique garde ses propres produits, ventes et clients.</p></div>
+</div></div></section>
+<section id="produit" class="dark"><div class="wrap"><div class="center"><p class="eyebrow">Le produit</p><h2>Une caisse pensée pour le comptoir</h2><p class="lead">Des écrans simples, lisibles sur téléphone, pour enregistrer une vente sans formation longue.</p></div>
+<div class="mock"><div class="tabs"><span class="on">Ventes</span><span>Stock</span><span>Clients</span></div>
+<table><tr><th>Article</th><th>Prix</th><th>Stock</th></tr><tr><td>Votre produit</td><td>— GNF</td><td>—</td></tr><tr><td colspan="3">Aucune vente pour le moment : vos produits et vos ventes apparaîtront ici.</td></tr></table></div>
+<p class="note">Illustration de l'interface — elle ne présente ni vente réelle, ni client réel.</p></div></section>
+<section><div class="wrap"><div class="center"><p class="eyebrow">Bénéfices</p><h2>Moins de papier, plus de visibilité</h2></div>
+<table class="compare"><tr><th>Avant</th><th>Avec TECH224 Ventes</th></tr>
+<tr><td>Les ventes sont notées à la main, dans plusieurs cahiers.</td><td>Chaque vente est enregistrée, datée et retrouvable par sa référence.</td></tr>
+<tr><td>Le stock est vérifié en comptant, au feeling.</td><td>Le stock baisse à chaque vente et les produits en alerte sont visibles.</td></tr>
+<tr><td>Il est difficile de savoir ce qui s'est vendu cette semaine.</td><td>Le tableau de bord et les rapports résument les ventes sur 7, 30 ou 90 jours.</td></tr>
+<tr><td>Les informations clients sont dispersées.</td><td>Chaque client a une fiche, avec son historique d'achats.</td></tr></table></div></section>
+<section class="dark"><div class="wrap"><div class="center"><p class="eyebrow">Démarrer</p><h2>Commencez en cinq étapes</h2></div>
+<div class="steps">
+<div class="step"><b>1</b><h3>Créez votre compte</h3><p>Inscrivez-vous avec votre numéro de téléphone et choisissez votre code PIN.</p></div>
+<div class="step"><b>2</b><h3>Créez votre boutique</h3><p>Donnez un nom à votre boutique. Vous pourrez en ajouter d'autres plus tard.</p></div>
+<div class="step"><b>3</b><h3>Ajoutez vos produits</h3><p>Pour chaque produit, indiquez son prix en GNF, son stock et son seuil d'alerte.</p></div>
+<div class="step"><b>4</b><h3>Connectez-vous en sécurité</h3><p>Utilisez votre téléphone et votre code PIN pour retrouver votre compte et vos données.</p></div>
+<div class="step"><b>5</b><h3>Encaissez votre première vente</h3><p>Depuis la caisse, ajoutez les produits, choisissez le moyen de paiement et validez.</p></div>
+</div></div></section>
+<section id="tarifs"><div class="wrap"><div class="center"><p class="eyebrow">Tarifs</p><h2>Des formules simples, en francs guinéens</h2><p class="lead">Commencez par 14 jours d'essai, puis choisissez la formule qui correspond à votre activité.</p></div>
+<div class="grid">
+<div class="card price"><h3>Essentiel</h3><p class="amount">79 200 <span class="per">GNF/mois</span></p><p>Pour démarrer : une boutique, caisse, stock, clients et rapports.</p><a class="btn btn-dark" href="/register">Démarrer l'essai gratuit</a></div>
+<div class="card price hot"><h3>Croissance</h3><p class="amount">199 200 <span class="per">GNF/mois</span></p><p>Pour développer votre activité : plusieurs boutiques et un suivi plus large.</p><a class="btn btn-primary" href="/register">Démarrer l'essai gratuit</a></div>
+<div class="card price"><h3>Entreprise</h3><p class="amount">Sur devis</p><p>Pour les structures qui ont besoin d'un accompagnement adapté.</p><a class="btn btn-dark" href="https://wa.me/224624683196">Demander un devis</a></div>
+</div></div></section>
+<section id="faq"><div class="wrap"><div class="center"><p class="eyebrow">Questions fréquentes</p><h2>Ce qu'on nous demande souvent</h2></div>
+<div class="faq">
+<details><summary>Combien de temps pour démarrer ?</summary><p>Quelques minutes suffisent en général : créer un compte, créer une boutique, ajouter un premier produit, puis encaisser une première vente.</p></details>
+<details><summary>L'application fonctionne-t-elle sans connexion ?</summary><p>Non. TECH224 Ventes est une application web : elle a besoin d'une connexion internet pour enregistrer et retrouver vos ventes. Elle ne synchronise pas de ventes hors ligne.</p></details>
+<details><summary>Quels moyens de paiement sont acceptés en caisse ?</summary><p>Vous pouvez enregistrer une vente payée en espèces, par Mobile Money, par virement ou par carte. L'application enregistre le moyen choisi ; elle ne débite pas elle-même un compte Mobile Money.</p></details>
+<details><summary>Mes données sont-elles en sécurité ?</summary><p>Votre compte est protégé par votre code PIN, qui n'est pas stocké en clair, et chaque commerçant ne voit que ses propres boutiques, produits, ventes et clients.</p></details>
+<details><summary>Puis-je changer de formule plus tard ?</summary><p>Oui. Vous pouvez passer d'une formule à l'autre depuis votre compte, selon l'évolution de votre activité.</p></details>
+<details><summary>Le support est-il en français ?</summary><p>Oui. L'application est en français, et vous pouvez nous joindre par téléphone ou WhatsApp au +224 624 683 196.</p></details>
+</div></div></section>
+<section class="cta"><div class="wrap"><p class="eyebrow">Prêt ?</p><h2>Prêt à gérer plus de ventes ?</h2><p class="lead" style="margin:0 auto">Créez votre compte, testez l'outil pendant 14 jours, puis décidez en toute tranquillité.</p>
+<div class="actions" style="justify-content:center"><a class="btn btn-light" href="/register">Démarrer l'essai gratuit</a><a class="btn" style="color:#fff;border-color:#fff" href="https://wa.me/224624683196">Nous écrire sur WhatsApp</a></div>
+<p>Téléphone / WhatsApp : +224 624 683 196 · Bureau : Cimenterie, Conakry</p></div></section>
+</main>
+<footer><div class="wrap"><div class="cols"><div><div class="logo" style="color:#fff">TECH224 VENTES</div><p>Un outil de gestion pour commerçants : caisse, stock, facturation, clients et rapports, en francs guinéens.</p></div>
+<div><h3 style="color:#fff">Produit</h3><p><a href="#fonctionnalites">Fonctionnalités</a><br><a href="#produit">Le produit</a><br><a href="#tarifs">Tarifs</a><br><a href="#faq">FAQ</a></p></div>
+<div><h3 style="color:#fff">Contact</h3><p>Téléphone / WhatsApp : +224 624 683 196<br>Bureau : Cimenterie, Conakry, Guinée<br><a href="/login">Se connecter</a> · <a href="/register">Créer un compte commerçant</a></p></div></div>
+<p class="fine">© 2026 TECH224 SARL — Conakry, Guinée · RC GN-2019-B-04421</p></div></footer>
+</body></html>"""
+
+
 @app.get("/")
 def index():
     m = current_merchant()
     if m:
         return redirect("/dashboard")
-    return page("""<div class="card"><h2>Gérez plus de ventes, sans plus de paperasse.</h2>
-<p>Caisse, stock, facturation, clients et rapports — en francs guinéens.</p>
-<p><a href="/register">Créer un compte commerçant</a> · <a href="/login">Se connecter</a></p>
-<p>Essentiel 79 200 GNF/mois · Croissance 199 200 GNF/mois · Entreprise sur devis · 14 jours d'essai.</p></div>""")
+    return render_template_string(HOME)
 
 
 @app.route("/register", methods=["GET", "POST"])
