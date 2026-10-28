@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tech224-ventes
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_PATH
+        value: /opt/render/project/src/data/tech224.db
+    disk:
+      name: tech224-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
